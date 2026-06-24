@@ -47,7 +47,9 @@ export default function MessagesPage() {
       }
     })
 
-    setConversations([...map.values()].sort((a, b) => new Date(b.lastAt).getTime() - new Date(a.lastAt).getTime()))
+    const convList: Conversation[] = []
+    map.forEach((v) => convList.push(v))
+    setConversations(convList.sort((a, b) => new Date(b.lastAt).getTime() - new Date(a.lastAt).getTime()))
     setLoading(false)
   }
 
