@@ -7,6 +7,7 @@ import { getSupabaseClient } from '@/lib/supabase'
 import type { BoardPost, Comment } from '@/lib/types'
 import { relativeTime, shortDate } from '@/lib/utils'
 import { useAuth } from '@/components/AuthProvider'
+import HsmLogo from '@/components/HsmLogo'
 
 export default function BoardDetailPage() {
   const { id } = useParams<{ id: string }>()
@@ -189,7 +190,7 @@ function CommentItem({
 }) {
   return (
     <div className="flex gap-3">
-      <div className="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center text-sm flex-shrink-0">🦈</div>
+      <div className="w-8 h-8 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0"><HsmLogo size={22} variant="icon" /></div>
       <div className="flex-1">
         <div className="flex items-center gap-2 mb-1">
           <Link href={`/profile/${comment.author_id}`} className="text-sm font-medium hover:text-primary-500">

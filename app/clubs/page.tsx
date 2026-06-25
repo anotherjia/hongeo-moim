@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { getSupabaseClient } from '@/lib/supabase'
 import type { Club } from '@/lib/types'
 import { useAuth } from '@/components/AuthProvider'
+import HsmLogo from '@/components/HsmLogo'
 
 export default function ClubsPage() {
   const { user } = useAuth()
@@ -36,7 +37,7 @@ export default function ClubsPage() {
   if (!user) {
     return (
       <div className="text-center py-16 space-y-4">
-        <div className="text-5xl">🦈</div>
+        <div className="flex justify-center"><HsmLogo size={56} variant="icon" /></div>
         <p className="text-gray-500">로그인이 필요합니다</p>
         <Link href="/auth/login" className="btn-primary inline-block">로그인</Link>
       </div>
@@ -56,7 +57,7 @@ export default function ClubsPage() {
         <div className="text-center py-12 text-gray-400">불러오는 중...</div>
       ) : clubs.length === 0 ? (
         <div className="text-center py-16 space-y-4">
-          <div className="text-5xl">🦈</div>
+          <div className="flex justify-center"><HsmLogo size={56} variant="icon" /></div>
           <p className="text-gray-500">아직 참여 중인 소모임이 없어요</p>
           <Link href="/clubs/create" className="btn-primary inline-block">소모임 만들기</Link>
         </div>
@@ -65,7 +66,7 @@ export default function ClubsPage() {
           {clubs.map((club) => (
             <Link key={club.id} href={`/clubs/${club.id}`}>
               <div className="card p-4 flex items-center gap-4 hover:shadow-md transition-shadow">
-                <div className="w-14 h-14 rounded-2xl bg-primary-100 flex items-center justify-center text-2xl flex-shrink-0">🦈</div>
+                <div className="w-14 h-14 rounded-2xl bg-primary-50 flex items-center justify-center flex-shrink-0"><HsmLogo size={36} variant="icon" /></div>
                 <div className="flex-1 min-w-0">
                   <p className="font-semibold truncate">{club.name}</p>
                   {club.description && (

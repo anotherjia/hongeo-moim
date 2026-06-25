@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>홍사모 — 홍어를 사랑하는 모임</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1b1513;
+    --ink-2:#241c19;
+    --hong:#cf2f37;
+    --hong-deep:#9c1f27;
+    --ochre:#dca33f;
+    --bone:#efe7d6;
+    --bone-dim:#c9bca4;
+    --pork:#e3a08f;
+    --line:rgba(220,163,63,.28);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html,body{background:#0f0b0a;}
+
+  body{
+    font-family:'Noto Sans KR',sans-serif;
+    color:var(--bone);
+    display:flex;
+    justify-content:center;
+    padding:32px 18px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .poster{
+    position:relative;
+    width:100%;
+    max-width:840px;
+    background:
+      radial-gradient(120% 60% at 50% -8%, rgba(207,47,55,.16), transparent 55%),
+      radial-gradient(90% 50% at 110% 18%, rgba(220,163,63,.10), transparent 50%),
+      linear-gradient(180deg,#221a17 0%, var(--ink) 42%, #17110f 100%);
+    border:1px solid rgba(220,163,63,.16);
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:0 40px 90px -40px rgba(0,0,0,.85), inset 0 0 0 1px rgba(0,0,0,.4);
+    isolation:isolate;
+  }
+
+  /* earthenware grain */
+  .grain{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+    opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .inner{position:relative;z-index:1;padding:clamp(30px,6vw,68px) clamp(24px,6vw,64px) clamp(34px,5vw,56px);}
+
+  /* ---------- masthead ---------- */
+  .masthead{position:relative;text-align:center;padding-top:8px;}
+
+  .hero-glyph{
+    position:absolute;top:50%;left:50%;
+    width:min(78%,420px);height:auto;
+    transform:translate(-50%,-46%);
+    z-index:0;opacity:.5;pointer-events:none;
+  }
+
+  .mast-content{position:relative;z-index:1;}
+
+  .eyebrow{
+    font-weight:700;font-size:clamp(11px,1.5vw,13px);
+    letter-spacing:.42em;color:var(--ochre);
+    text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:.7em;
+  }
+  .eyebrow::before,.eyebrow::after{content:"";width:26px;height:1px;background:var(--line);}
+
+  .brand{
+    font-family:'Black Han Sans',sans-serif;
+    color:var(--hong);
+    font-size:clamp(80px,20vw,168px);
+    line-height:.92;
+    letter-spacing:.06em;
+    margin:14px 0 2px;
+    text-shadow:0 2px 0 var(--hong-deep), 4px 8px 24px rgba(0,0,0,.55);
+  }
+
+  .sub{
+    font-weight:500;font-size:clamp(15px,2.6vw,21px);
+    letter-spacing:.28em;color:var(--bone);
+    padding-left:.28em;
+  }
+
+  .tagline{
+    font-family:'Noto Serif KR',serif;
+    font-weight:600;
+    margin-top:18px;font-size:clamp(14px,2.2vw,18px);
+    letter-spacing:.04em;color:var(--ochre);
+  }
+
+  /* ---------- lead ---------- */
+  .lead{
+    position:relative;
+    margin:clamp(34px,6vw,56px) auto clamp(36px,6vw,58px);
+    max-width:640px;text-align:center;
+    font-family:'Noto Serif KR',serif;
+    font-weight:400;
+    font-size:clamp(16px,2.5vw,21px);
+    line-height:2.05;color:#e7dccb;
+  }
+  .lead b{color:var(--hong);font-weight:700;}
+  .lead::before{
+    content:"";display:block;width:46px;height:2px;
+    background:var(--hong);margin:0 auto 26px;
+  }
+
+  /* ---------- points ---------- */
+  .points{display:flex;flex-direction:column;gap:clamp(30px,5vw,46px);}
+
+  .point{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:clamp(16px,3vw,28px);
+    align-items:start;
+    padding-top:clamp(26px,4vw,38px);
+    border-top:1px solid var(--line);
+  }
+
+  .marker{width:60px;height:60px;display:block;}
+
+  .p-label{
+    font-weight:700;font-size:13px;letter-spacing:.34em;
+    color:var(--ochre);margin-bottom:8px;
+  }
+  .p-head{
+    font-family:'Noto Serif KR',serif;font-weight:700;
+    font-size:clamp(20px,3.4vw,28px);line-height:1.32;
+    color:var(--bone);margin-bottom:14px;
+  }
+  .p-head .accent{color:var(--hong);}
+  .p-body{
+    font-size:clamp(14.5px,2.1vw,16.5px);line-height:1.95;
+    color:var(--bone-dim);max-width:60ch;
+  }
+
+  /* 삼합 diagram for the third point */
+  .samhap{margin:22px 0 6px;max-width:380px;}
+
+  /* editable placeholders */
+  .fill{
+    display:inline-flex;align-items:center;gap:.55em;
+    margin-top:16px;padding:9px 15px;
+    border:1px dashed rgba(220,163,63,.55);
+    border-radius:4px;
+    background:rgba(220,163,63,.06);
+    font-size:13.5px;color:var(--ochre);line-height:1.5;
+  }
+  .fill::before{content:"✎";font-size:12px;opacity:.8;}
+
+  /* ---------- CTA ---------- */
+  .cta{
+    margin-top:clamp(40px,6vw,60px);
+    padding:clamp(28px,5vw,40px) clamp(24px,5vw,40px);
+    background:
+      linear-gradient(180deg, rgba(207,47,55,.14), rgba(207,47,55,.04)),
+      var(--ink-2);
+    border:1px solid rgba(207,47,55,.3);
+    border-radius:6px;text-align:center;
+  }
+  .cta-glyph{width:30px;height:30px;margin:0 auto 14px;display:block;}
+  .cta-head{
+    font-family:'Black Han Sans',sans-serif;
+    font-size:clamp(22px,4vw,32px);color:var(--bone);
+    letter-spacing:.02em;line-height:1.3;
+  }
+  .cta-head em{color:var(--hong);font-style:normal;}
+
+  .cta-grid{
+    margin-top:24px;
+    display:grid;grid-template-columns:repeat(2,1fr);
+    gap:12px;text-align:left;
+  }
+  .cta-item{
+    padding:13px 16px;border-radius:4px;
+    background:rgba(0,0,0,.25);
+    border:1px dashed rgba(220,163,63,.4);
+  }
+  .cta-item .k{
+    display:block;font-weight:700;font-size:11px;
+    letter-spacing:.2em;color:var(--ochre);margin-bottom:5px;
+  }
+  .cta-item .v{font-size:14px;color:var(--bone-dim);}
+
+  .footer{
+    margin-top:clamp(28px,4vw,38px);text-align:center;
+    font-size:12px;letter-spacing:.12em;color:rgba(201,188,164,.55);
+  }
+  .footer .dot{color:var(--hong);margin:0 .5em;}
+
+  @media (max-width:560px){
+    .point{grid-template-columns:1fr;gap:10px;}
+    .marker{width:52px;height:52px;}
+    .cta-grid{grid-template-columns:1fr;}
+    .eyebrow{letter-spacing:.3em;}
+  }
+
+  /* gentle entrance */
+  @keyframes rise{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+  .inner > *{animation:rise .7s cubic-bezier(.2,.7,.2,1) both;}
+  .inner > *:nth-child(2){animation-delay:.08s;}
+  .inner > *:nth-child(3){animation-delay:.16s;}
+  .inner > *:nth-child(4){animation-delay:.24s;}
+  @media (prefers-reduced-motion:reduce){
+    .inner > *{animation:none;}
+  }
+
+  @media print{
+    body{padding:0;background:#fff;}
+    .poster{box-shadow:none;border:none;max-width:100%;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+  <main class="poster">
+    <div class="grain"></div>
+    <div class="inner">
+
+      <!-- ===== MASTHEAD ===== -->
+      <header class="masthead">
+        <svg class="hero-glyph" viewBox="0 0 240 240" fill="none" aria-hidden="true">
+          <path d="M120 14 L226 120 L120 226 L14 120 Z" stroke="rgba(207,47,55,.5)" stroke-width="1.5"/>
+          <path d="M120 46 L194 120 L120 194 L46 120 Z" stroke="rgba(220,163,63,.32)" stroke-width="1.2"/>
+          <path d="M120 84 L156 120 L120 156 L84 120 Z" fill="rgba(207,47,55,.10)"/>
+        </svg>
+        <div class="mast-content">
+          <span class="eyebrow">사내 동호회 · 신규 회원 모집</span>
+          <h1 class="brand">홍사모</h1>
+          <p class="sub">홍어를 사랑하는 모임</p>
+          <p class="tagline">톡! 쏘는 매력, 톡! 트이는 사이</p>
+        </div>
+      </header>
+
+      <!-- ===== LEAD ===== -->
+      <p class="lead">
+        호불호 강하기로는 둘째가라면 서러운 홍어. 그 강렬한 한 점 앞에서는
+        직급도, 부서도, 어색함도 스르륵 녹아내립니다.
+        <b>삭힐수록 깊어지는 맛처럼, 함께할수록 단단해지는 사이.</b>
+        홍사모는 홍어 한 접시로 친목과 발전, 그리고 화합을 빚어갑니다.
+      </p>
+
+      <!-- ===== POINTS ===== -->
+      <section class="points">
+
+        <!-- 一 친목 -->
+        <article class="point">
+          <svg class="marker" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 3 L45 24 L24 45 L3 24 Z" fill="none" stroke="var(--hong)" stroke-width="2.4"/>
+            <text x="24" y="25" text-anchor="middle" dominant-baseline="central"
+                  font-family="'Noto Serif KR',serif" font-size="17" font-weight="700" fill="var(--bone)">一</text>
+          </svg>
+          <div>
+            <div class="p-label">친목 · 親睦</div>
+            <h2 class="p-head">입맛이 통하면, <span class="accent">마음도 통합니다</span></h2>
+            <p class="p-body">
+              아무나 즐기지 못하는 그 맛을 우리는 압니다. ‘이 맛 좀 아는 사람들’이
+              한 테이블에 둘러앉으면 직급도 부서도 잊은 채 진솔한 이야기가 오갑니다.
+              홍탁(홍어+막걸리) 한 잔이면, 데면데면하던 사이도 어느새 호형호제.
+            </p>
+            <span class="fill">정기 모임 일정 · 단골집 정보를 적어 주세요</span>
+          </div>
+        </article>
+
+        <!-- 二 발전 -->
+        <article class="point">
+          <svg class="marker" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 3 L45 24 L24 45 L3 24 Z" fill="none" stroke="var(--hong)" stroke-width="2.4"/>
+            <text x="24" y="25" text-anchor="middle" dominant-baseline="central"
+                  font-family="'Noto Serif KR',serif" font-size="17" font-weight="700" fill="var(--bone)">二</text>
+          </svg>
+          <div>
+            <div class="p-label">발전 · 發展</div>
+            <h2 class="p-head">삭힐수록 깊어지는 맛, <span class="accent">알수록 깊어지는 우리</span></h2>
+            <p class="p-body">
+              처음엔 코를 막던 사람도 어느새 홍어 예찬론자가 됩니다. 낯선 것에 도전하고,
+              익숙해지고, 마침내 진가를 알아가는 그 과정. 홍사모는 새로운 입맛처럼
+              새로운 인연과 경험에 도전하며 함께 성장합니다.
+            </p>
+            <span class="fill">모임에서 함께한 활동 · 이벤트 사례를 적어 주세요</span>
+          </div>
+        </article>
+
+        <!-- 三 화합 -->
+        <article class="point">
+          <svg class="marker" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 3 L45 24 L24 45 L3 24 Z" fill="none" stroke="var(--hong)" stroke-width="2.4"/>
+            <text x="24" y="25" text-anchor="middle" dominant-baseline="central"
+                  font-family="'Noto Serif KR',serif" font-size="17" font-weight="700" fill="var(--bone)">三</text>
+          </svg>
+          <div>
+            <div class="p-label">화합 · 和合</div>
+            <h2 class="p-head">홍어삼합 — <span class="accent">서로 달라서, 더 완벽한</span></h2>
+
+            <svg class="samhap" viewBox="0 0 360 320" aria-label="홍어삼합 다이어그램: 홍어, 돼지고기, 묵은지가 만나 화합을 이룬다">
+              <g style="mix-blend-mode:screen">
+                <path d="M140 52 L210 140 L140 228 L70 140 Z"  fill="rgba(207,47,55,.55)"  stroke="var(--hong)" stroke-width="1.5"/>
+                <path d="M220 52 L290 140 L220 228 L150 140 Z" fill="rgba(227,160,143,.5)" stroke="var(--pork)" stroke-width="1.5"/>
+                <path d="M180 112 L250 200 L180 288 L110 200 Z" fill="rgba(220,163,63,.5)" stroke="var(--ochre)" stroke-width="1.5"/>
+              </g>
+              <text x="92" y="40"  text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="14" font-weight="700" fill="var(--bone)">홍어</text>
+              <text x="270" y="40" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="14" font-weight="700" fill="var(--bone)">돼지고기</text>
+              <text x="180" y="312" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="14" font-weight="700" fill="var(--bone)">묵은지</text>
+              <text x="180" y="164" text-anchor="middle" dominant-baseline="central" font-family="'Black Han Sans',sans-serif" font-size="22" fill="#1b1513">화합</text>
+            </svg>
+
+            <p class="p-body">
+              톡 쏘는 홍어, 고소한 돼지고기, 묵직한 묵은지. 개성 강한 셋이 만나
+              둘도 없는 궁합을 이루는 홍어삼합처럼, 서로 다른 우리가 한자리에 모여
+              완벽한 화합을 빚어냅니다.
+            </p>
+            <span class="fill">부서 간 교류 · 협업으로 이어진 이야기를 적어 주세요</span>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- ===== CTA ===== -->
+      <section class="cta">
+        <svg class="cta-glyph" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M24 3 L45 24 L24 45 L3 24 Z" fill="var(--hong)"/>
+        </svg>
+        <h2 class="cta-head">톡 쏘는 매력에 빠질 준비, <em>되셨나요?</em></h2>
+      </section>
+
+      <p class="footer">홍사모 <span class="dot">◆</span> 홍어를 사랑하는 모임 <span class="dot">◆</span> kt cs </p>
+
+    </div>
+  </main>
+</body>
+</html>

@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useAuth } from './AuthProvider'
 import { usePathname } from 'next/navigation'
+import HsmLogo from './HsmLogo'
 
 export default function Navbar() {
   const { user, signOut } = useAuth()
@@ -11,9 +12,8 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 bg-white border-b border-gray-100 z-50">
       <div className="max-w-2xl mx-auto px-4 h-14 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 font-bold text-lg text-primary-500">
-          <span>🦈</span>
-          <span>홍어 모임</span>
+        <Link href="/" className="flex items-center">
+          <HsmLogo size={36} />
         </Link>
 
         {/* 데스크탑 네비게이션 */}

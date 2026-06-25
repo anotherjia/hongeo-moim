@@ -13,6 +13,7 @@ export default function BoardCreatePage() {
   const [content, setContent] = useState('')
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const supabase = getSupabaseClient()
 
   if (!user) {
@@ -30,15 +31,22 @@ export default function BoardCreatePage() {
     e.preventDefault()
     if (!title.trim() || !content.trim()) return
     setLoading(true)
-    const { data } = await supabase.from('board_posts').insert({
+    setError('')
+    const { data, error: err } = await supabase.from('board_posts').insert({
       author_id: user.id,
       title: title.trim(),
       content: content.trim(),
       tags: selectedTags,
-      image_urls: [],
+      status: '진행중',
     }).select().single()
     setLoading(false)
-    if (data) router.push(`/board/${data.id}`)
+    if (err || !data) {
+      console.error('게시글 등록 실패:', err?.message, err?.code, err?.details, err?.hint)
+      setError('게시글 등록에 실패했습니다')
+      return
+    }
+    alert('게시글이 등록되었습니다')
+    router.push(`/board/${data.id}`)
   }
 
   return (
@@ -91,6 +99,7 @@ export default function BoardCreatePage() {
             />
             <p className="text-xs text-gray-400 text-right mt-1">{content.length}/2000</p>
           </div>
+          {error && <p className="text-red-500 text-sm">{error}</p>}
         </div>
 
         <div className="flex gap-3">

@@ -6,6 +6,7 @@ import { getSupabaseClient } from '@/lib/supabase'
 import { useAuth } from '@/components/AuthProvider'
 import type { DirectMessage, Profile } from '@/lib/types'
 import { relativeTime } from '@/lib/utils'
+import HsmLogo from '@/components/HsmLogo'
 
 type Conversation = {
   partnerId: string
@@ -73,7 +74,7 @@ export default function MessagesPage() {
           {conversations.map((conv) => (
             <Link key={conv.partnerId} href={`/messages/${conv.partnerId}`}>
               <div className="card p-4 flex items-center gap-3 hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center text-xl flex-shrink-0">🦈</div>
+                <div className="w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0"><HsmLogo size={32} variant="icon" /></div>
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-center">
                     <p className="font-medium">{conv.partnerNickname}</p>

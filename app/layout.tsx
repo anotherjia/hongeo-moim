@@ -4,7 +4,7 @@ import { AuthProvider } from '@/components/AuthProvider'
 import Navbar from '@/components/Navbar'
 
 export const metadata: Metadata = {
-  title: '홍어 모임',
+  title: 'HSM',
   description: '홍어 애호가들의 소셜 커뮤니티',
 }
 
@@ -29,7 +29,7 @@ function MobileTabBar() {
   const tabs = [
     { href: '/', icon: '🏠', label: '홈' },
     { href: '/board', icon: '📋', label: '게시판' },
-    { href: '/clubs', icon: '🦈', label: '소모임' },
+    { href: '/clubs', icon: '👥', label: '소모임' },
     { href: '/messages', icon: '💬', label: '메시지' },
     { href: '/profile', icon: '👤', label: '프로필' },
   ]

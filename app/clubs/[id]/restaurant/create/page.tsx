@@ -91,10 +91,12 @@ export default function RestaurantCreatePage() {
       review: review.trim() || null,
     })
     setLoading(false)
-    if (!error) {
-      alert(`🍽️ "${name}" 맛집이 기록되었어요!`)
-      router.push(`/clubs/${clubId}`)
+    if (error) {
+      alert('저장에 실패했습니다')
+      return
     }
+    alert(`🍽️ "${name}" 맛집이 기록되었어요!`)
+    router.push(`/clubs/${clubId}`)
   }
 
   return (

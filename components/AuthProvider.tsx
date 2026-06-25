@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { getSupabaseClient } from '@/lib/supabase'
 import type { Profile } from '@/lib/types'
+import LoadingScreen from '@/components/LoadingScreen'
 
 type AuthContextType = {
   user: Profile | null
@@ -64,6 +65,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <AuthContext.Provider value={{ user, loading, signOut, refreshUser }}>
+      {loading && <LoadingScreen />}
       {children}
     </AuthContext.Provider>
   )

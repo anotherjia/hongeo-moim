@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { getSupabaseClient } from '@/lib/supabase'
 import { useAuth } from '@/components/AuthProvider'
+import HsmLogo from '@/components/HsmLogo'
 
 const STYLE_OPTIONS = ['홍어 삼합', '묵은지 홍어', '홍어 찜', '생홍어', '홍어 탕', '기타']
 
@@ -32,6 +33,7 @@ export default function ProfileEditPage() {
       setError('저장에 실패했습니다')
     } else {
       await refreshUser()
+      alert('저장되었습니다')
       router.push('/profile')
     }
     setLoading(false)
@@ -43,7 +45,7 @@ export default function ProfileEditPage() {
       <form onSubmit={handleSave} className="space-y-4">
         <div className="card p-4 space-y-4">
           <div className="text-center">
-            <div className="w-20 h-20 rounded-full bg-primary-100 flex items-center justify-center text-4xl mx-auto mb-2">🦈</div>
+            <div className="w-20 h-20 rounded-full bg-primary-50 flex items-center justify-center mx-auto mb-2"><HsmLogo size={48} variant="icon" /></div>
             <p className="text-xs text-gray-400">프로필 사진 기능은 준비 중이에요</p>
           </div>
           <div>

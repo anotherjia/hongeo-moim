@@ -28,7 +28,7 @@ export default function ScheduleCreatePage() {
     e.preventDefault()
     if (!scheduledAt || !user) return
     setLoading(true)
-    await supabase.from('meetup_schedules').insert({
+    const { error } = await supabase.from('meetup_schedules').insert({
       club_id: clubId,
       created_by: user.id,
       scheduled_at: scheduledAt,
@@ -36,6 +36,12 @@ export default function ScheduleCreatePage() {
       location_name: locationName.trim() || null,
       agenda: agenda.trim() || null,
     })
+    setLoading(false)
+    if (error) {
+      alert('저장에 실패했습니다')
+      return
+    }
+    alert('일정이 저장되었습니다')
     router.push(`/clubs/${clubId}`)
   }
 

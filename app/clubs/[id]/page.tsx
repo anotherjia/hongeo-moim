@@ -7,6 +7,7 @@ import { getSupabaseClient } from '@/lib/supabase'
 import type { Club, Restaurant, MeetupSchedule, ClubMember } from '@/lib/types'
 import { useAuth } from '@/components/AuthProvider'
 import { relativeTime, meetupDate, shortDate } from '@/lib/utils'
+import HsmLogo from '@/components/HsmLogo'
 
 type Tab = 'restaurants' | 'schedule' | 'members'
 
@@ -58,7 +59,7 @@ export default function ClubChannelPage() {
     <div className="py-4 space-y-4">
       {/* 소모임 헤더 */}
       <div className="card p-4 flex items-center gap-4">
-        <div className="w-14 h-14 rounded-2xl bg-primary-100 flex items-center justify-center text-2xl">🦈</div>
+        <div className="w-14 h-14 rounded-2xl bg-primary-50 flex items-center justify-center"><HsmLogo size={36} variant="icon" /></div>
         <div>
           <h1 className="text-lg font-bold">{club.name}</h1>
           {club.description && <p className="text-sm text-gray-500">{club.description}</p>}
@@ -158,7 +159,7 @@ export default function ClubChannelPage() {
           )}
           {members.map((m) => (
             <div key={m.user_id} className="card p-4 flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">🦈</div>
+              <div className="w-10 h-10 rounded-full bg-primary-50 flex items-center justify-center"><HsmLogo size={28} variant="icon" /></div>
               <div className="flex-1">
                 <p className="font-medium">{(m.profiles as any)?.nickname}</p>
                 <p className="text-xs text-gray-400">{shortDate(m.joined_at)} 참여</p>

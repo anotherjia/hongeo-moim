@@ -7,6 +7,7 @@ import { getSupabaseClient } from '@/lib/supabase'
 import type { Badge } from '@/lib/types'
 import { BADGE_INFO, RANK_TIERS } from '@/lib/types'
 import { getRankTierEmoji } from '@/lib/utils'
+import HsmLogo from '@/components/HsmLogo'
 
 export default function ProfilePage() {
   const { user, signOut } = useAuth()
@@ -20,7 +21,7 @@ export default function ProfilePage() {
 
   if (!user) return (
     <div className="text-center py-16 space-y-4">
-      <div className="text-5xl">🦈</div>
+      <div className="flex justify-center"><HsmLogo size={56} variant="icon" /></div>
       <Link href="/auth/login" className="btn-primary inline-block">로그인하기</Link>
     </div>
   )
@@ -32,7 +33,7 @@ export default function ProfilePage() {
       {/* 프로필 헤더 */}
       <div className="card p-5 text-center">
         <div className="w-20 h-20 rounded-full bg-primary-50 border-2 border-primary-100 flex items-center justify-center text-4xl mx-auto mb-3">
-          🦈
+          <HsmLogo size={56} variant="icon" />
         </div>
         <h1 className="text-lg font-bold text-gray-900">{user.nickname}</h1>
         <p className="text-primary-500 text-sm font-medium mt-0.5">{tierEmoji} {user.rank_tier}</p>
@@ -51,7 +52,7 @@ export default function ProfilePage() {
             <p className="text-[10px] text-gray-400 mt-0.5">뱃지</p>
           </div>
           <div className="bg-gray-50 rounded-xl py-3">
-            <p className="text-xl font-bold text-gray-700">🦈</p>
+            <div className="flex justify-center"><HsmLogo size={28} variant="icon" /></div>
             <p className="text-[10px] text-gray-400 mt-0.5">홍어러버</p>
           </div>
         </div>

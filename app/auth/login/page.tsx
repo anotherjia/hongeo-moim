@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { getSupabaseClient } from '@/lib/supabase'
+import HsmLogo from '@/components/HsmLogo'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -30,8 +31,8 @@ export default function LoginPage() {
     <div className="min-h-[80vh] flex items-center justify-center">
       <div className="card w-full max-w-sm p-8">
         <div className="text-center mb-8">
-          <div className="text-5xl mb-3">🦈</div>
-          <h1 className="text-2xl font-bold">홍어 모임</h1>
+          <div className="flex justify-center mb-3"><HsmLogo size={48} variant="full" /></div>
+          <h1 className="text-2xl font-bold">로그인</h1>
           <p className="text-gray-500 text-sm mt-1">홍어 애호가들의 커뮤니티</p>
         </div>
 

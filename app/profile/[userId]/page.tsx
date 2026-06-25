@@ -8,6 +8,7 @@ import { useAuth } from '@/components/AuthProvider'
 import type { Profile, Badge } from '@/lib/types'
 import { BADGE_INFO } from '@/lib/types'
 import { getRankTierEmoji } from '@/lib/utils'
+import HsmLogo from '@/components/HsmLogo'
 
 export default function UserProfilePage() {
   const { userId } = useParams<{ userId: string }>()
@@ -26,7 +27,7 @@ export default function UserProfilePage() {
   return (
     <div className="py-4 space-y-4">
       <div className="card p-6 text-center">
-        <div className="w-20 h-20 rounded-full bg-primary-100 flex items-center justify-center text-4xl mx-auto mb-3">🦈</div>
+        <div className="w-20 h-20 rounded-full bg-primary-50 flex items-center justify-center mx-auto mb-3"><HsmLogo size={48} variant="icon" /></div>
         <h1 className="text-xl font-bold">{profile.nickname}</h1>
         <p className="text-primary-500 font-medium mt-1">
           {getRankTierEmoji(profile.rank_tier)} {profile.rank_tier}

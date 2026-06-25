@@ -6,6 +6,7 @@ import { useAuth } from '@/components/AuthProvider'
 import { getSupabaseClient } from '@/lib/supabase'
 import type { BoardPost, Club } from '@/lib/types'
 import { relativeTime } from '@/lib/utils'
+import HsmLogo from '@/components/HsmLogo'
 
 export default function HomePage() {
   const { user } = useAuth()
@@ -46,7 +47,7 @@ export default function HomePage() {
       {/* 비로그인 환영 배너 */}
       {!user && (
         <div className="rounded-2xl p-6 text-center text-white" style={{ background: '#E84C3D' }}>
-          <div className="text-4xl mb-3">🦈</div>
+          <div className="flex justify-center mb-3"><HsmLogo size={56} variant="icon" /></div>
           <h2 className="text-xl font-bold mb-1">홍어 모임에 오신 걸 환영해요!</h2>
           <p className="text-sm opacity-80 mb-4">홍어 애호가들과 소통하고 맛집을 탐방해보세요</p>
           <Link href="/auth/signup" className="inline-block bg-white text-primary-500 font-bold px-6 py-2 rounded-xl text-sm">
@@ -66,7 +67,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="bg-white/20 rounded-2xl px-4 py-3 text-center">
-            <span className="text-3xl block">🦈</span>
+            <span className="block flex justify-center"><HsmLogo size={40} variant="icon" /></span>
             <Link href="/ranking" className="text-[10px] opacity-80 mt-1 block underline">랭킹 보기</Link>
           </div>
         </div>
@@ -86,8 +87,8 @@ export default function HomePage() {
                 href={`/clubs/${club.id}`}
                 className="flex-shrink-0 flex flex-col items-center gap-1.5"
               >
-                <div className="w-14 h-14 rounded-2xl bg-primary-50 border border-primary-100 flex items-center justify-center text-2xl">
-                  🦈
+                <div className="w-14 h-14 rounded-2xl bg-primary-50 border border-primary-100 flex items-center justify-center">
+                  <HsmLogo size={36} variant="icon" />
                 </div>
                 <span className="text-xs text-center w-16 truncate text-gray-600">{club.name}</span>
               </Link>

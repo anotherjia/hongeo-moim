@@ -6,6 +6,7 @@ import { getSupabaseClient } from '@/lib/supabase'
 import { useAuth } from '@/components/AuthProvider'
 import type { DirectMessage, Profile } from '@/lib/types'
 import { relativeTime } from '@/lib/utils'
+import HsmLogo from '@/components/HsmLogo'
 
 export default function ChatPage() {
   const { userId: partnerId } = useParams<{ userId: string }>()
@@ -75,7 +76,7 @@ export default function ChatPage() {
     <div className="flex flex-col h-[calc(100vh-120px)]">
       {/* 헤더 */}
       <div className="card p-4 flex items-center gap-3 mb-3">
-        <div className="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">🦈</div>
+        <div className="w-10 h-10 rounded-full bg-primary-50 flex items-center justify-center"><HsmLogo size={28} variant="icon" /></div>
         <p className="font-semibold">{partner?.nickname}</p>
       </div>
 
