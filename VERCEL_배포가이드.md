@@ -47,7 +47,7 @@ git push -u origin main
 1. https://vercel.com 접속 → GitHub으로 로그인
 2. **New Project** → `hongeo-moim` 저장소 선택
 3. **Environment Variables** 추가:
-   - `NEXT_PUBLIC_SUPABASE_URL` = `https://vntzcyugofmjivpsnfzm.supabase.co`
+   - `NEXT_PUBLIC_SUPABASE_URL` = `https://bjrinravcbjmbgelsink.supabase.co`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY` = `eyJhbGciOi...` (전체 키)
 4. **Deploy** 클릭
 

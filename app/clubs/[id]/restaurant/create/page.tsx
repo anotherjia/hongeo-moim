@@ -84,7 +84,7 @@ export default function RestaurantCreatePage() {
     setLoading(true)
     const { error } = await supabase.from('restaurants').insert({
       club_id: clubId,
-      visited_by: user.id,
+      recorded_by: user.id,
       name: name.trim(),
       address: address.trim() || null,
       rating,
@@ -92,6 +92,7 @@ export default function RestaurantCreatePage() {
     })
     setLoading(false)
     if (error) {
+      console.error('맛집 등록 실패:', error.message, error.code, error.details, error.hint)
       alert('저장에 실패했습니다')
       return
     }
