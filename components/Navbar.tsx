@@ -10,10 +10,11 @@ export default function Navbar() {
   const pathname = usePathname()
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white border-b border-gray-100 z-50">
+    <header className="fixed top-0 left-0 right-0 z-50" style={{ background: '#13062E' }}>
       <div className="max-w-2xl mx-auto px-4 h-14 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
-          <HsmLogo size={36} />
+        <Link href="/" className="flex items-center gap-2">
+          <HsmLogo size={30} variant="icon" />
+          <span className="text-white font-bold text-lg tracking-tight">HSM</span>
         </Link>
 
         {/* 데스크탑 네비게이션 */}
@@ -28,7 +29,7 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               className={`font-medium transition-colors ${
-                pathname === item.href ? 'text-primary-500' : 'text-gray-600 hover:text-primary-500'
+                pathname === item.href ? 'text-white' : 'text-white/50 hover:text-white'
               }`}
             >
               {item.label}
@@ -37,20 +38,26 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link href="/notifications" className="text-gray-500 hover:text-primary-500">
+          <Link href="/notifications" className="text-white/60 hover:text-white transition-colors text-lg">
             🔔
           </Link>
           {user ? (
             <div className="flex items-center gap-3">
-              <Link href="/profile" className="text-sm font-medium text-gray-700 hover:text-primary-500">
+              <Link href="/profile" className="text-sm font-medium text-white/80 hover:text-white transition-colors">
                 {user.nickname}
               </Link>
-              <button onClick={signOut} className="text-sm text-gray-400 hover:text-red-500">
+              <button
+                onClick={signOut}
+                className="text-xs text-white/40 hover:text-white/70 transition-colors"
+              >
                 로그아웃
               </button>
             </div>
           ) : (
-            <Link href="/auth/login" className="btn-primary text-sm py-1.5 px-3">
+            <Link
+              href="/auth/login"
+              className="text-sm font-semibold text-white bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors"
+            >
               로그인
             </Link>
           )}

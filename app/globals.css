@@ -3,12 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --primary: #E84C3D;
+  --primary: #7C3AED;
+  --primary-dark: #13062E;
 }
 
 body {
-  background-color: #f7f7f5;
+  background-color: #13062E;
   -webkit-font-smoothing: antialiased;
+}
+
+main {
+  background-color: #F8F5FF;
 }
 
 @layer components {
@@ -19,15 +24,14 @@ body {
     @apply border border-primary-500 text-primary-500 hover:bg-primary-50 active:scale-95 font-semibold px-4 py-2 rounded-xl transition-all;
   }
   .input {
-    @apply w-full px-4 py-3 rounded-xl bg-gray-100 border border-transparent focus:border-primary-500 focus:bg-white outline-none transition-all text-sm;
+    @apply w-full px-4 py-3 rounded-xl bg-white border border-primary-100 focus:border-primary-400 focus:ring-2 focus:ring-primary-100 outline-none transition-all text-sm;
   }
   .card {
-    @apply bg-white rounded-2xl border border-gray-100;
+    @apply bg-white rounded-[18px] border border-primary-100;
   }
   .tag {
     @apply text-xs font-medium px-2.5 py-0.5 rounded-full;
   }
-  /* 섹션 헤더 */
   .section-header {
     @apply flex items-center justify-between mb-3;
   }
@@ -37,15 +41,12 @@ body {
   .section-link {
     @apply text-sm text-primary-500 font-medium;
   }
-  /* 피드 카드 */
   .feed-card {
-    @apply card p-4 active:scale-[0.99] transition-transform;
+    @apply bg-white rounded-[18px] border border-primary-100 p-4 active:scale-[0.99] transition-transform;
   }
-  /* 검색 바 */
   .search-bar {
-    @apply flex items-center gap-2 bg-gray-100 rounded-xl px-3 py-2.5 text-sm text-gray-400;
+    @apply flex items-center gap-2 bg-white border border-primary-100 rounded-xl px-3 py-2.5 text-sm text-gray-400;
   }
-  /* 하단 탭 */
   .tab-item {
     @apply flex-1 flex flex-col items-center gap-0.5 py-2 transition-colors;
   }
