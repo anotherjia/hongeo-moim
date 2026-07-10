@@ -27,8 +27,13 @@ export default function SignupPage() {
     setError('')
 
     const { data, error: signUpError } = await supabase.auth.signUp({ email, password })
-    if (signUpError || !data.user) {
-      setError('회원가입에 실패했습니다. 이미 사용 중인 이메일일 수 있습니다.')
+    if (signUpError) {
+      setError(`회원가입에 실패했습니다: ${signUpError.message}`)
+      setLoading(false)
+      return
+    }
+    if (!data.user) {
+      setError('이미 가입된 이메일입니다. 로그인을 시도하거나 비밀번호 찾기를 이용해 주세요.')
       setLoading(false)
       return
     }
